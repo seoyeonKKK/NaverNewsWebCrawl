@@ -41,6 +41,8 @@ def main():
     #dataframe
     df = pd.DataFrame(data = np.array([[text.count('신선'), text.count('시원'), text.count('혹독한'), text.count('만')]]), columns=['신선', '시원', '혹독한', '만'])
     display(df)
+    #tocsv
+    df.to_csv("crawl.csv", mode='a', header='false')
     print('\n')
 
     #series
