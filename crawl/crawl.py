@@ -42,7 +42,7 @@ def main():
     #dataframe
     df = pd.DataFrame(data = np.array([[text.count('신선'), text.count('시원'), text.count('혹독한'), text.count('만')]]), columns=['신선', '시원', '혹독한', '만'])
     display(df)
-    
+
     #dataframe to csv
     df.to_csv("crawl.csv", mode='a', header='false')
     print('\n')
@@ -51,11 +51,18 @@ def main():
     my_series = pd.Series({"선선": text.count('선선'), "시원": text.count('시원'), "혹독한": text.count('혹독한'), "만": text.count('만')})
     display(pd.DataFrame(my_series))
     print('\n')
-    
+
     #dict
     my_dict = {"선선": [text.count('선선')], "시원": [text.count('시원')], "혹독한": [text.count('혹독한')], "만": [text.count('만')]}
     display(pd.DataFrame(my_dict))
     print('\n')
+
+    #dict
+    my_dict = pd.DataFrame({"단어": ["신선", "시원", "혹독한", "만"], "갯수": [text.count("신선"), text.count("시원"), text.count("혹독한"), text.count("만")]})
+    my_dict = my_dict.sort_values(["갯수"], ascending=[False])
+    display(pd.DataFrame(my_dict))
+    print('\n')
+    
     # write_file.write(text)
     read_file.close()
     write_file.close()
