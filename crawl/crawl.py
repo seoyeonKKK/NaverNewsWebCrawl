@@ -4,6 +4,10 @@ import re
 from IPython.display import display
 import pandas as pd
 import numpy as np
+from konlpy.tag import Kkma
+from konlpy.utils import pprint
+from konlpy.tag import *
+from konlpy.corpus import kolaw
 
 # 출력 파일 명
 OUTPUT_FILE_NAME = 'output.txt'
@@ -29,6 +33,7 @@ def clean_text(text):
 
 # 메인 함수
 def main():
+    
     open_output_file = open(OUTPUT_FILE_NAME, 'w')
     result_text = get_text(URL)
     open_output_file.write(result_text)
@@ -62,7 +67,17 @@ def main():
     my_dict = my_dict.sort_values(["갯수"], ascending=[False])
     display(pd.DataFrame(my_dict))
     print('\n')
+
+    # konlpy
+    hannanum = Hannanum()
+    kkma = Kkma()
+    twitter = Twitter()
     
+    #kkma
+    # nouns
+    kkma.nouns(text[:])
+    print(text)
+
     # write_file.write(text)
     read_file.close()
     write_file.close()
